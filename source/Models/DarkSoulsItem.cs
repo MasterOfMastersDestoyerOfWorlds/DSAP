@@ -11,6 +11,15 @@ namespace DSAP.Models
 {
     public class DarkSoulsItem
     {
+        public DarkSoulsItem(string name)
+        {
+            Category = DSItemCategory.Consumables;
+            Id = 0x172;
+            StackSize = 0;
+            ApId = 0;
+            Name = name;
+            otherWorldItem = true;
+        }
         public string Name { get; set; }
         public int Id { get; set; }
         public int StackSize { get; set; }
@@ -19,6 +28,6 @@ namespace DSAP.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public DSItemCategory Category { get; set; }
         public int ApId { get; set; }
-
+        public bool otherWorldItem { get; set; } = false;
     }
 }

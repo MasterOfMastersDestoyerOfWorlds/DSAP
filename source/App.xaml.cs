@@ -1,5 +1,4 @@
-﻿
-using Archipelago.Core;
+﻿using Archipelago.Core;
 using Archipelago.Core.MauiGUI;
 using Archipelago.Core.MauiGUI.Models;
 using Archipelago.Core.MauiGUI.ViewModels;
@@ -9,6 +8,7 @@ using Archipelago.Core.Util;
 using Archipelago.Core.Util.Overlay;
 using Archipelago.MultiClient.Net.BounceFeatures.DeathLink;
 using Archipelago.MultiClient.Net.MessageLog.Messages;
+using Archipelago.MultiClient.Net.MessageLog.Parts;
 using DSAP.Models;
 using Newtonsoft.Json;
 using Serilog;
@@ -25,9 +25,9 @@ namespace DSAP
         public static List<DarkSoulsItem> AllItems { get; set; }
         private static readonly object _lockObject = new object();
         private bool IsHandlingDeathlink = false;
-        private static List<InjectedString> injectedStrings = new List<InjectedString>();
-        private static Queue<Item> itemQueue = new Queue<Item>();
-        private static int MAX_DISPLAYED_ITEMS = 5;
+        private static ItemQueue itemQueue = new ItemQueue();
+
+        public static string Slot;
 
         public App()
         {
@@ -57,121 +57,7 @@ namespace DSAP
             //    Log.Error("Overwriting itemlots failed.");
             //}
 
-            HomewardBoneCommand();
-        }
-
-        public static void AddItem(int category, int id, int quantity)
-        {
-            var command = Helpers.GetItemCommand();
-            //Set item category
-            Array.Copy(BitConverter.GetBytes(category), 0, command, 0x1, 4);
-            //Set item quantity
-            Array.Copy(BitConverter.GetBytes(quantity), 0, command, 0x7, 4);
-            //set item id
-            Array.Copy(BitConverter.GetBytes(id), 0, command, 0xD, 4);
-
-            var result = Memory.ExecuteCommand(command);
-        }
-        public static void AddItemWithMessage(int category, int id, int quantity)
-        {
-            var command = Helpers.GetItemWithMessage();
-
-            // Set item category (at offset 0x3F)
-            Array.Copy(BitConverter.GetBytes(category), 0, command, 0x3F, 4);
-
-            // Set item quantity (at offset 0x43)
-            Array.Copy(BitConverter.GetBytes(quantity), 0, command, 0x43, 4);
-
-            // Set item id (at offset 0x47)
-            Array.Copy(BitConverter.GetBytes(id), 0, command, 0x47, 4);
-
-            var result = Memory.ExecuteCommand(command);
-        }
-
-        public static bool ItemPickupDialogWithoutPickup(int category, int id, int quantity)
-        {
-            // Tested this method of displaying messages with a 100 back to back triggers and it does not crash the game
-            ulong itemPickupDialogManImpl = Helpers.GetItemPickupDialogManImplOffset();
-            ItemPickupDialogLinkedList itemPickupLL = Memory.ReadStruct<ItemPickupDialogLinkedList>(itemPickupDialogManImpl);
-            ulong currIdxOfLastElement = (itemPickupLL.NextAllocationInLL - itemPickupLL.StartOfLL) / 0x18;
-
-            if (currIdxOfLastElement >= (ulong)MAX_DISPLAYED_ITEMS)
-            {
-                return false;
-            }
-
-            LinkedListItemData itemData = itemPickupLL.Items[currIdxOfLastElement];
-            itemData.ItemCategory = (uint)category;
-            itemData.ItemCode = (uint)id;
-            itemData.ItemCount = (uint)quantity;
-            itemData.PreviousItemInLL = itemPickupLL.StartOfLL + ((currIdxOfLastElement - 1) * 0x18);
-            if (currIdxOfLastElement == 0)
-            {
-                itemData.PreviousItemInLL = 0;
-            }
-            itemPickupLL.Items[currIdxOfLastElement] = itemData;
-            itemPickupLL.NextAllocationInLL += 0x18;
-            itemPickupLL.LastElementLinkedList = itemPickupLL.NextAllocationInLL - 0x18;
-
-            Memory.WriteStruct<ItemPickupDialogLinkedList>(itemPickupDialogManImpl, itemPickupLL);
-            return true;
-        }
-
-        /// <summary>
-        /// This command triggers the anti debugger occasionally use ItemPickupDialogWithoutPickup instead
-        /// <summary>
-        public static void ItemPickupDialogWithoutPickupCommand(int category, int id, int quantity)
-        {
-            var command = Helpers.ItemPickupDialogWithoutPickup();
-
-            // Set item category (at offset 0x3F)
-            Array.Copy(BitConverter.GetBytes(category), 0, command, 0x38, 4);
-
-            // Set item quantity (at offset 0x43)
-            Array.Copy(BitConverter.GetBytes(quantity), 0, command, 0x3C, 4);
-
-            // Set item id (at offset 0x47)
-            Array.Copy(BitConverter.GetBytes(id), 0, command, 0x40, 4);
-
-            var result = Memory.ExecuteCommand(command);
-        }
-
-        public static void HomewardBoneCommand()
-        {
-            var command = Helpers.HomewardBone();
-
-            Array.Copy(BitConverter.GetBytes(Helpers.GetBaseBOffset()), 0, command, 0x3, 4);
-
-            var result = Memory.ExecuteCommand(command);
-        }
-
-        public static void RemoveItemPickupDialogSetupFunction()
-        {
-            long itemPickupDialogSetupFunction = 0x140728c90;
-            var command = Helpers.InjectItemPickupDialogSwitch();
-            long address = 0x1400003F0;
-            int destinationIndex = 0x12;
-            long offsetToItemPickupSetupFunction = itemPickupDialogSetupFunction - (address + destinationIndex);
-            byte[] offsetInjectedFunctionBytes = BitConverter.GetBytes((int)offsetToItemPickupSetupFunction);
-            if (!BitConverter.IsLittleEndian)
-            {
-                Array.Reverse(offsetInjectedFunctionBytes);
-            }
-            Array.Copy(offsetInjectedFunctionBytes, 0, command, destinationIndex - 0x4, 4);
-            Memory.WriteByteArray((ulong)address, command);
-
-            long itemPickupDialogSetupFunctionCall = 0x1403fe4fa;
-            long offset = address - (itemPickupDialogSetupFunctionCall + 0x5);
-            byte[] injectedFuncitonCall = new byte[5];
-            injectedFuncitonCall[0] = 0xE8;
-            byte[] offsetBytes = BitConverter.GetBytes((int)offset);
-            if (!BitConverter.IsLittleEndian)
-            {
-                Array.Reverse(offsetBytes);
-            }
-            Array.Copy(offsetBytes, 0, injectedFuncitonCall, 1, 4);
-            Memory.WriteByteArray((ulong)itemPickupDialogSetupFunctionCall, injectedFuncitonCall);
-
+            DarkSoulsMemory.HomewardBoneCommand();
         }
 
         public static bool IsValidPointer(ulong address)
@@ -193,6 +79,7 @@ namespace DSAP
             Log.Logger.Information("Connecting...");
             if (Client != null)
             {
+                Client.isReadyToReceiveItems = false;
                 Client.Connected -= OnConnected;
                 Client.Disconnected -= OnDisconnected;
                 Client.ItemReceived -= Client_ItemReceived;
@@ -243,6 +130,8 @@ namespace DSAP
 
             await Client.Login(e.Slot, !string.IsNullOrWhiteSpace(e.Password) ? e.Password : null);
 
+            Slot = e.Slot;
+
             Client.IntializeOverlayService(new WindowsOverlayService());
 
             //if (Client.Options.ContainsKey("enable_deathlink") && (bool)Client.Options["enable_deathlink"])
@@ -252,12 +141,12 @@ namespace DSAP
             //    Memory.MonitorAddressForAction<int>(Helpers.GetPlayerHPAddress(), () => SendDeathlink(_deathlinkService), (health) => Helpers.GetPlayerHP() <= 0);
             //}
 
-            CleanUpItemPickupText();
+            itemQueue.CleanUpItemPickupText();
             RemoveItems();
-            RemoveItemPickupDialogSetupFunction();
+            DarkSoulsMemory.RemoveItemPickupDialogSetupFunction();
 
             //need to reload the area on connect to ensure that the item lots are updated 
-            HomewardBoneCommand();
+            DarkSoulsMemory.HomewardBoneCommand();
 
             var bossLocations = Helpers.GetBossFlagLocations();
             var itemLocations = Helpers.GetItemLotLocations();
@@ -268,8 +157,7 @@ namespace DSAP
 
             var goalLocation = bossLocations.First(x => x.Name.Contains("Lord of Cinder"));
             Memory.MonitorAddressBitForAction(goalLocation.Address, goalLocation.AddressBit, () => Client.SendGoalCompletion());
-
-            foreach(var fogWall in fogWallLocations)
+            foreach (var fogWall in fogWallLocations)
             {
                 Memory.MonitorAddressBitForAction(fogWall.Address, fogWall.AddressBit, () =>
                 {
@@ -290,27 +178,18 @@ namespace DSAP
             //    Log.Logger.Debug($"Rested at bonfire: {lastBonfire.id}:{lastBonfire.name}");
             //});
 
-            Memory.MonitorAddressByteChangeForAction(Helpers.GetItemPickupDialog(), 0x1, 0x0, () => CleanUpItemPickupText());
-
-
+            Memory.MonitorAddressByteChangeForAction(Helpers.GetItemPickupDialog(), 0x1, 0x0, () => itemQueue.CleanUpItemPickupText());
+            Task.Run(async delegate
+            {
+                while (true)
+                {
+                    await Task.Delay(100);
+                    itemQueue.TryDisplayItem();
+                }
+            });
 
             Context.ConnectButtonEnabled = true;
-
-
-        }
-
-        private void CleanUpItemPickupText()
-        {
-            foreach (InjectedString injString in injectedStrings)
-            {
-                Helpers.FreeItemPickupText(injString);
-            }
-            injectedStrings = new List<InjectedString>();
-            while (injectedStrings.Count() == 0 && Helpers.GetDisplayedItemCount() < MAX_DISPLAYED_ITEMS
-                && itemQueue.Count() > 0)
-            {
-                DisplayItemPickupText(itemQueue.Dequeue());
-            }
+            Client.isReadyToReceiveItems = true;
         }
 
         //private void SendDeathlink(DeathLinkService _deathlinkService)
@@ -340,10 +219,42 @@ namespace DSAP
 
         private void Client_MessageReceived(object? sender, Archipelago.Core.Models.MessageReceivedEventArgs e)
         {
-            if (e.Message.Parts.Any(x => x.Text == "[Hint]: "))
+            MessagePart[] Parts = e.Message.Parts;
+            if (Parts.Any(x => x.Text == "[Hint]: "))
             {
                 LogHint(e.Message);
             }
+            else if (Parts.Count() >= 5 && Parts[0].Text == Slot && Parts.Any(x => x.Text.Contains("sent")))
+            {
+                DarkSoulsItem otherWorldItem = new DarkSoulsItem(Parts[4].Text + " " + Parts[2].Text);
+                itemQueue.DisplayOtherWorldItemPickupText(otherWorldItem);
+            }
+            else if (Parts.Length == 1 && Parts[0].Text.StartsWith(Slot + ": /"))
+            {
+                string[] commandParts = Parts[0].Text.Split(" ");
+                if (commandParts.Length >= 2 && commandParts[1] == "/warp")
+                {
+                    string bonfireName = string.Join(" ", commandParts.Skip(2));
+                    if (bonfireName.Length == 0)
+                    {
+                        bonfireName = "Firelink Shrine [Bonfire]";
+                    }
+                    List<LastBonfire> bonfires = Helpers.GetLastBonfireList();
+                    List<LastBonfire> queryResults = bonfires.FindAll(x => x.name.ToLower().Contains(bonfireName.ToLower()));
+                    if (queryResults.Count() == 1)
+                    {
+                        DarkSoulsMemory.FirelinkCommand(queryResults[0]);
+                    }
+                    else
+                    {
+                        Log.Logger.Information("Could not find bonfire try one of: ");
+                        foreach(LastBonfire bonfire in queryResults) {
+                            Log.Logger.Information(bonfire.name);
+                        }
+                    }
+                }   
+            }
+
             Log.Logger.Information(JsonConvert.SerializeObject(e.Message));
             Client.AddOverlayMessage(e.Message.ToString());
         }
@@ -386,57 +297,14 @@ namespace DSAP
         }
         private static void Client_ItemReceived(object? sender, ItemReceivedEventArgs e)
         {
-            int itemAPId = (int)e.Item.Id;
-
-            int displayedItemCount = Helpers.GetDisplayedItemCount();
-            bool isDarkSoulsItem = AllItems.First(x => x.ApId == itemAPId) != null;
-            if (displayedItemCount >= MAX_DISPLAYED_ITEMS || (!isDarkSoulsItem && displayedItemCount > 0))
-            {
-                itemQueue.Enqueue(e.Item);
-                return;
-            }
-            DisplayItemPickupText(e.Item);
-
-        }
-        private static void DisplayItemPickupText(Item item)
-        {
-
+            Item item = e.Item;
             int itemAPId = (int)item.Id;
-            DarkSoulsItem fakeItem = new DarkSoulsItem();
-            fakeItem.Category = DSItemCategory.Consumables;
-            fakeItem.Id = 0x172;
-            fakeItem.StackSize = 0;
-            fakeItem.ApId = (int)item.Id;
-            fakeItem.Name = item.Name;
+            DarkSoulsItem fakeItem = new DarkSoulsItem(item.Name);
             DarkSoulsItem itemToReceive = AllItems.FirstOrDefault(x => x.ApId == itemAPId, fakeItem);
-            bool isDarkSoulsItem = itemToReceive != fakeItem;
-            int itemCount = itemToReceive.StackSize == 0 ? 1 : itemToReceive.StackSize;
-            LogItem(item, itemCount);
-
-            if (isDarkSoulsItem)
-            {
-
-                Log.Logger.Verbose($"Received {itemToReceive.Name} ({itemToReceive.ApId})");
-                if (itemToReceive.ApId == 11120000)
-                {
-                    RunLagTrap();
-                }
-                else
-                {
-                    AddItem((int)itemToReceive.Category, itemToReceive.Id, itemCount);
-                    ItemPickupDialogWithoutPickup(((int)itemToReceive.Category), itemToReceive.Id, itemCount);
-                }
-            }
-            else
-            {
-                Log.Logger.Information("Couldnt find correct item");
-                InjectedString injString = Helpers.SetItemPickupText(itemToReceive);
-                injectedStrings.Add(injString);
-                ItemPickupDialogWithoutPickup(((int)itemToReceive.Category), itemToReceive.Id, itemCount);
-            }
+            LogItem(e.Item, itemToReceive.StackSize);
+            itemQueue.DisplayItemPickupText(itemToReceive);
         }
-
-        private static async void RunLagTrap()
+        public static async void RunLagTrap()
         {
             using (var lagTrap = new LagTrap(TimeSpan.FromSeconds(20)))
             {

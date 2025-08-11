@@ -524,6 +524,12 @@ namespace DSAP
             }
             return null;
         }
+        public static void SetLastBonfire(LastBonfire lastBonfire)
+        {
+            var baseC = GetBaseCOffset();
+            var lastBonfireAddress = OffsetPointer(baseC, 0xB34);
+            Memory.Write(lastBonfireAddress, lastBonfire.id);
+        }
         public static async void MonitorLastBonfire(Action<LastBonfire> action)
         {
             var lastBonfire = GetLastBonfire();
@@ -996,6 +1002,10 @@ namespace DSAP
             return x;
         }
 
+        internal static ulong GetMenuVisibilityTable()
+        {
+            return Helpers.ResolvePointerChain(0x141c88d98, new int[] { 0x0, 0x12C });
+        }
         internal static ulong GetItemPickupDialog()
         {
             return Helpers.ResolvePointerChain(0x141c88d98, new int[] { 0x0, 0x12C });
