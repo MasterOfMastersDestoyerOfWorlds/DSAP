@@ -3,6 +3,7 @@ using Archipelago.Core.Models;
 using Archipelago.Core.Util;
 using DSAP;
 using DSAP.Models;
+using Serilog;
 using static DSAP.Enums;
 namespace DSAP
 {
@@ -125,6 +126,73 @@ namespace DSAP
             Array.Copy(offsetBytes, 0, injectedFuncitonCall, 1, 4);
             Memory.WriteByteArray((ulong)itemPickupDialogSetupFunctionCall, injectedFuncitonCall);
 
+        }
+        public static void RemoveItems()
+        {
+            var lotDictionary = Helpers.GetItemLots();
+            var lotFlags = Helpers.GetItemLotFlags();
+
+            //Helpers.WriteToFile("itemLots.json", lots);
+
+            var replacementLot = new ItemLotParamStruct
+            {
+                LotRarity = 1,
+                LotOverallGetItemFlagId = -1,
+                LotCumulateNumFlagId = -1,
+                LotCumulateNumMax = 0,
+            };
+            replacementLot.CumulateResetBits = 0;
+            replacementLot.EnableLuckBits = 0;
+            replacementLot.CumulateLotPoints[0] = 0;
+            replacementLot.GetItemFlagIds[0] = -1;
+            replacementLot.LotItemBasePoints[0] = 100;
+            replacementLot.LotItemCategories[0] = (int)DSItemCategory.Consumables;
+            replacementLot.LotItemNums[0] = 1;
+            replacementLot.LotItemIds[0] = 370;
+
+            for (int i = 0; i < lotFlags.Count; i++)
+            {
+                if (lotFlags[i].IsEnabled)
+                {
+                    List<ItemLot> lots = lotDictionary.GetValueOrDefault(lotFlags[i].Flag);
+                    foreach (ItemLot lot in lots)
+                    {
+                        Helpers.OverwriteItemLot(lot, replacementLot);
+                    }
+                }
+            }
+            Log.Logger.Information("Finished overwriting items");
+        }
+        public static void ReplaceShopItems()
+        {
+            var lotDictionary = Helpers.GetShopLineUpItems();
+            var lotFlags = Helpers.GetShopLineUpFlags();
+
+            var replacementLot = new ShopLineUpItemParam
+            {
+                EquipId = 0x172,
+                SoulValue = 0x100,
+                MaterialId = 0x0,
+                EventFlag = 0x0,
+                qwcId = 0x0,
+                SellQuantity = 0x100,
+                ShopType = 0x0,
+                EquipType = 0x0,
+                padding = 0x0
+            };
+
+            for (int i = 0; i < lotFlags.Count; i++)
+            {
+                if (lotFlags[i].IsEnabled)
+                {
+                    List<ShopLineUpItem> lots = lotDictionary.GetValueOrDefault(lotFlags[i].Flag);
+                    foreach (ShopLineUpItem lot in lots)
+                    {
+                        Helpers.OverwriteShopLineUpItem(lot, replacementLot);
+                    }
+                }
+            }
+            Log.Logger.Information("Finished overwriting items");
         }
     }
 }

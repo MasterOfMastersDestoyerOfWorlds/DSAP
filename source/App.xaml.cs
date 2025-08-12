@@ -142,7 +142,7 @@ namespace DSAP
             //}
 
             itemQueue.CleanUpItemPickupText();
-            RemoveItems();
+            DarkSoulsMemory.RemoveItems();
             DarkSoulsMemory.RemoveItemPickupDialogSetupFunction();
 
             //need to reload the area on connect to ensure that the item lots are updated 
@@ -257,43 +257,6 @@ namespace DSAP
 
             Log.Logger.Information(JsonConvert.SerializeObject(e.Message));
             Client.AddOverlayMessage(e.Message.ToString());
-        }
-
-        private static void RemoveItems()
-        {
-            var lotDictionary = Helpers.GetItemLots();
-            var lotFlags = Helpers.GetItemLotFlags();
-
-            //Helpers.WriteToFile("itemLots.json", lots);
-
-            var replacementLot = new ItemLotParamStruct
-            {
-                LotRarity = 1,
-                LotOverallGetItemFlagId = -1,
-                LotCumulateNumFlagId = -1,
-                LotCumulateNumMax = 0,
-            };
-            replacementLot.CumulateResetBits = 0;
-            replacementLot.EnableLuckBits = 0;
-            replacementLot.CumulateLotPoints[0] = 0;
-            replacementLot.GetItemFlagIds[0] = -1;
-            replacementLot.LotItemBasePoints[0] = 100;
-            replacementLot.LotItemCategories[0] = (int)DSItemCategory.Consumables;
-            replacementLot.LotItemNums[0] = 1;
-            replacementLot.LotItemIds[0] = 370;
-
-            for (int i = 0; i < lotFlags.Count; i++)
-            {
-                if (lotFlags[i].IsEnabled)
-                {
-                    List<ItemLot> lots = lotDictionary.GetValueOrDefault(lotFlags[i].Flag);
-                    foreach (ItemLot lot in lots)
-                    {
-                        Helpers.OverwriteItemLot(lot, replacementLot);
-                    }
-                }
-            }
-            Log.Logger.Information("Finished overwriting items");
         }
         private static void Client_ItemReceived(object? sender, ItemReceivedEventArgs e)
         {

@@ -66,6 +66,7 @@ namespace DSAP
                 3, true, 7) }
         };
         private static ulong ItemLotParamOffset = 0;
+        private static ulong ShopLineUpItemParamOffset = 0;
 
         public static ulong FindAddressBySignature(OffsetParams signature)
         {
@@ -278,9 +279,19 @@ namespace DSAP
             ItemLotParamOffset = ResolvePointerChain(soloParams, 0x570, 0x38, 0x0);
             return ItemLotParamOffset;
         }
+        
+        public static ulong GetShopLineUpItemParamOffset()
+        {
+            if (ShopLineUpItemParamOffset != 0)
+            {
+                return ShopLineUpItemParamOffset;
+            }
+            ShopLineUpItemParamOffset = ResolvePointerChain(0x141C7E450, 0x0, 0xC0, 0x38, -0x18, 0x12AD) + 0x1D;
+            return ShopLineUpItemParamOffset;
+        }
         public static ulong GetPlayerGameDataOffset()
         {
-            return ResolvePointerChain(0x141C8A530, new int[] { 0x0, 0xD10});
+            return ResolvePointerChain(0x141C8A530, new int[] { 0x0, 0xD10 });
         }
         public static ulong GetItemPickupDialogManImplOffset()
         {
@@ -420,11 +431,42 @@ namespace DSAP
             ulong newAddress = (ptr & 0xFFFF0000) | newOffset;
             return newAddress;
         }
+        public static Dictionary<int, List<ShopLineUpItem>> GetShopLineUpItems()
+        {
+            Dictionary<int, List<ShopLineUpItem>> shopLineUpItemLookup = new Dictionary<int, List<ShopLineUpItem>>();
+            var startAddress = GetShopLineUpItemParamOffset();
+
+            var dataOffset = Memory.ReadUShort(startAddress + 0x4);
+            var rowCount = Memory.ReadUShort(startAddress + 0xA);
+            var sizeOfStruct = Marshal.SizeOf(typeof(ShopLineUpItemParam));
+
+            List<ShopLineUpItemParam> shopLineUpItemParams = Memory.ReadStructs<ShopLineUpItemParam>(startAddress + dataOffset, rowCount);
+
+            for (int i = 0; i < shopLineUpItemParams.Count; i++)
+            {
+                ShopLineUpItemParam p = shopLineUpItemParams[i];
+                int flagId = p.EventFlag;
+
+                List<ShopLineUpItem> lots = shopLineUpItemLookup.GetValueOrDefault(flagId, new List<ShopLineUpItem>());
+                ShopLineUpItem shopLineUpItem = new ShopLineUpItem(p, startAddress + dataOffset + (ulong)i * (ulong)sizeOfStruct);
+                lots.Add(shopLineUpItem);
+
+                shopLineUpItemLookup.TryAdd(flagId, lots);
+            }
+            return shopLineUpItemLookup;
+        }
+        public static void OverwriteShopLineUpItem(ShopLineUpItem oldShopLineUpItem, ShopLineUpItemParam newShopLineUpItem)
+        {
+            newShopLineUpItem.EventFlag = oldShopLineUpItem.shopLineUpItemParam.EventFlag;
+            newShopLineUpItem.SoulValue = oldShopLineUpItem.shopLineUpItemParam.SoulValue;
+            Memory.WriteStruct<ShopLineUpItemParam>(oldShopLineUpItem.startAddress, newShopLineUpItem);
+        }
         public static Dictionary<int, List<ItemLot>> GetItemLots()
         {
             Dictionary<int, List<ItemLot>> itemLotLookup = new Dictionary<int, List<ItemLot>>();
             var startAddress = GetItemLotParamOffset();
 
+            //TODO is this supposed to be a UShort like the ShopLineUpTable? 
             var dataOffset = Memory.ReadUInt(startAddress + 0x4);
             var rowCount = Memory.ReadUShort(startAddress + 0xA);
             var sizeOfStruct = Marshal.SizeOf(typeof(ItemLotParamStruct));
@@ -626,6 +668,12 @@ namespace DSAP
         {
             var json = OpenEmbeddedResource("DSAP.Resources.ItemLots.json");
             var list = JsonConvert.DeserializeObject<List<ItemLotFlag>>(json);
+            return list;
+        }
+        public static List<ShopLineUpFlag> GetShopLineUpFlags()
+        {
+            var json = OpenEmbeddedResource("DSAP.Resources.ShopLineUpFlags.json");
+            var list = JsonConvert.DeserializeObject<List<ShopLineUpFlag>>(json);
             return list;
         }
         public static List<BossFlag> GetBossFlags()
