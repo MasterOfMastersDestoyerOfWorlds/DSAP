@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using static DSAP.Enums;
+using static DSAP.DarkSoulsEnums;
 
 namespace DSAP.Models
 {
@@ -13,7 +13,7 @@ namespace DSAP.Models
     {
         public DarkSoulsItem(string name)
         {
-            Category = DSItemCategory.Consumables;
+            Category = ItemCategory.Consumables;
             Id = 0x172;
             StackSize = 0;
             ApId = 0;
@@ -26,7 +26,7 @@ namespace DSAP.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public ItemUpgrade UpgradeType { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public DSItemCategory Category { get; set; }
+        public ItemCategory Category { get; set; }
         public int ApId { get; set; }
         public bool otherWorldItem { get; set; } = false;
     }

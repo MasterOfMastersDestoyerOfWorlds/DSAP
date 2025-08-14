@@ -1,13 +1,12 @@
 
 using Archipelago.Core.Models;
 using Archipelago.Core.Util;
-using DSAP;
 using DSAP.Models;
 using Serilog;
-using static DSAP.Enums;
+using static DSAP.DarkSoulsEnums;
 namespace DSAP
 {
-    public class DarkSoulsMemory
+    public static class DarkSoulsMemoryActions
     {
         public static void AddItem(int category, int id, int quantity)
         {
@@ -146,7 +145,7 @@ namespace DSAP
             replacementLot.CumulateLotPoints[0] = 0;
             replacementLot.GetItemFlagIds[0] = -1;
             replacementLot.LotItemBasePoints[0] = 100;
-            replacementLot.LotItemCategories[0] = (int)DSItemCategory.Consumables;
+            replacementLot.LotItemCategories[0] = DarkSoulsEnumUtils.GetItemCategoryHexValue(ItemCategory.Consumables);
             replacementLot.LotItemNums[0] = 1;
             replacementLot.LotItemIds[0] = 370;
 
@@ -154,6 +153,7 @@ namespace DSAP
             {
                 if (lotFlags[i].IsEnabled)
                 {
+                    var thing = App.APLocationsMap.GetValueOrDefault(lotFlags[i].Id);
                     List<ItemLot> lots = lotDictionary.GetValueOrDefault(lotFlags[i].Flag);
                     foreach (ItemLot lot in lots)
                     {
@@ -185,11 +185,23 @@ namespace DSAP
             {
                 if (lotFlags[i].IsEnabled)
                 {
-                    List<ShopLineUpItem> lots = lotDictionary.GetValueOrDefault(lotFlags[i].Flag);
-                    foreach (ShopLineUpItem lot in lots)
+                    var thing = App.APLocationsMap.GetValueOrDefault(lotFlags[i].Id);
+                    if (thing == null)
                     {
-                        Helpers.OverwriteShopLineUpItem(lot, replacementLot);
+                        continue;
                     }
+                    List<ShopLineUpItem> lots = lotDictionary.GetValueOrDefault((int)lotFlags[i].Flag);
+                    DarkSoulsItem dsItem = App.AllItems.FirstOrDefault(x => x.ApId == thing.ItemId);
+                    if (dsItem != null)
+                    {
+                        replacementLot.EquipId = dsItem.Id;
+                        replacementLot.EquipType = (byte)DarkSoulsEnumUtils.ToShopEquipType(dsItem.Category);
+                        replacementLot.ShopType = (byte)DarkSoulsEnumUtils.ToShopType(dsItem.Category);
+                    }  
+                    foreach (ShopLineUpItem lot in lots)
+                        {
+                            Helpers.OverwriteShopLineUpItem(lot, replacementLot);
+                        }
                 }
             }
             Log.Logger.Information("Finished overwriting items");

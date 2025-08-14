@@ -62,6 +62,7 @@ class DSRWorld(World):
         self.enabled_location_categories.add(DSRLocationCategory.ITEM_LOT),
         self.enabled_location_categories.add(DSRLocationCategory.BONFIRE),
         self.enabled_location_categories.add(DSRLocationCategory.DOOR),
+        self.enabled_location_categories.add(DSRLocationCategory.SHOP_LINE_UP_KEY),
 
     def create_regions(self):
         # Create Regions

@@ -63,6 +63,7 @@
     <None Remove="Resources\RangedWeapons.json" />
     <None Remove="Resources\Rings.json" />
     <None Remove="Resources\Shields.json" />
+    <None Remove="Resources\ShopLineUpFlags.json" />
     <None Remove="Resources\Spells.json" />
     <None Remove="Resources\SpellTools.json" />
     <None Remove="Resources\temp.json" />
@@ -87,6 +88,7 @@
     <EmbeddedResource Include="Resources\RangedWeapons.json" />
     <EmbeddedResource Include="Resources\Rings.json" />
     <EmbeddedResource Include="Resources\Shields.json" />
+    <EmbeddedResource Include="Resources\ShopLineUpFlags.json" />
     <EmbeddedResource Include="Resources\Spells.json" />
     <EmbeddedResource Include="Resources\SpellTools.json" />
     <EmbeddedResource Include="Resources\temp.json" />

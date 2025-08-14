@@ -12,7 +12,7 @@ using Archipelago.MultiClient.Net.MessageLog.Parts;
 using DSAP.Models;
 using Newtonsoft.Json;
 using Serilog;
-using static DSAP.Enums;
+using static DSAP.DarkSoulsEnums;
 using Color = Microsoft.Maui.Graphics.Color;
 namespace DSAP
 {
@@ -28,6 +28,7 @@ namespace DSAP
         private static ItemQueue itemQueue = new ItemQueue();
 
         public static string Slot;
+        public static Dictionary<long, Archipelago.MultiClient.Net.Models.ScoutedItemInfo> APLocationsMap;
 
         public App()
         {
@@ -57,7 +58,7 @@ namespace DSAP
             //    Log.Error("Overwriting itemlots failed.");
             //}
 
-            DarkSoulsMemory.HomewardBoneCommand();
+            DarkSoulsMemoryActions.HomewardBoneCommand();
         }
 
         public static bool IsValidPointer(ulong address)
@@ -141,23 +142,28 @@ namespace DSAP
             //    Memory.MonitorAddressForAction<int>(Helpers.GetPlayerHPAddress(), () => SendDeathlink(_deathlinkService), (health) => Helpers.GetPlayerHP() <= 0);
             //}
 
+            APLocationsMap = await Client.CurrentSession.Locations.ScoutLocationsAsync(Client.CurrentSession.Locations.AllLocations.ToArray());
+
             itemQueue.CleanUpItemPickupText();
-            DarkSoulsMemory.RemoveItems();
-            DarkSoulsMemory.RemoveItemPickupDialogSetupFunction();
+            DarkSoulsMemoryActions.RemoveItems();
+            DarkSoulsMemoryActions.RemoveItemPickupDialogSetupFunction();
+
+            //DarkSoulsMemoryActions.ReplaceShopItems();
 
             //need to reload the area on connect to ensure that the item lots are updated 
-            DarkSoulsMemory.HomewardBoneCommand();
+            DarkSoulsMemoryActions.HomewardBoneCommand();
 
             var bossLocations = Helpers.GetBossFlagLocations();
             var itemLocations = Helpers.GetItemLotLocations();
+            var shopLineUpLocations = Helpers.GetShopLineUpFlagLocations();
             var bonfireLocations = Helpers.GetBonfireFlagLocations();
             var doorLocations = Helpers.GetDoorFlagLocations();
             var fogWallLocations = Helpers.GetFogWallFlagLocations();
             var miscLocations = Helpers.GetMiscFlagLocations();
 
-            var goalLocation = bossLocations.First(x => x.Name.Contains("Lord of Cinder"));
+            var goalLocation = (Archipelago.Core.Models.Location)bossLocations.First(x => x.Name.Contains("Lord of Cinder"));
             Memory.MonitorAddressBitForAction(goalLocation.Address, goalLocation.AddressBit, () => Client.SendGoalCompletion());
-            foreach (var fogWall in fogWallLocations)
+            foreach (Archipelago.Core.Models.Location fogWall in fogWallLocations)
             {
                 Memory.MonitorAddressBitForAction(fogWall.Address, fogWall.AddressBit, () =>
                 {
@@ -170,6 +176,7 @@ namespace DSAP
             Client.MonitorLocations(itemLocations);
             Client.MonitorLocations(bonfireLocations);
             Client.MonitorLocations(doorLocations);
+            //Client.MonitorLocations(shopLineUpLocations);
             // Client.MonitorLocations(fogWallLocations);
             Client.MonitorLocations(miscLocations);
 
@@ -243,16 +250,32 @@ namespace DSAP
                     List<LastBonfire> queryResults = bonfires.FindAll(x => x.name.ToLower().Contains(bonfireName.ToLower()));
                     if (queryResults.Count() == 1)
                     {
-                        DarkSoulsMemory.FirelinkCommand(queryResults[0]);
+                        DarkSoulsMemoryActions.FirelinkCommand(queryResults[0]);
                     }
                     else
                     {
                         Log.Logger.Information("Could not find bonfire try one of: ");
-                        foreach(LastBonfire bonfire in queryResults) {
+                        foreach (LastBonfire bonfire in queryResults)
+                        {
                             Log.Logger.Information(bonfire.name);
                         }
                     }
-                }   
+                }
+                else if (commandParts.Length == 3 && commandParts[1] == "/name")
+                {
+                    if (int.TryParse(commandParts[2], out int itemId))
+                    {
+                        DarkSoulsMemoryActions.ItemPickupDialogWithoutPickup(DarkSoulsEnums.ItemCategoryHexValues.Accessory, itemId, 0);
+                        DarkSoulsMemoryActions.ItemPickupDialogWithoutPickup(DarkSoulsEnums.ItemCategoryHexValues.Armor, itemId, 0);
+                        DarkSoulsMemoryActions.ItemPickupDialogWithoutPickup(DarkSoulsEnums.ItemCategoryHexValues.Weapon, itemId, 0);
+                        DarkSoulsMemoryActions.ItemPickupDialogWithoutPickup(DarkSoulsEnums.ItemCategoryHexValues.Good, itemId, 0);
+                    }
+                    else
+                    {
+                        Console.Error.WriteLine($"Invalid item id: \"{commandParts[2]}\"");
+                    }
+                    
+                }
             }
 
             Log.Logger.Information(JsonConvert.SerializeObject(e.Message));

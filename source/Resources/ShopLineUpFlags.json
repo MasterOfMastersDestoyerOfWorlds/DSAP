@@ -1,133 +1,752 @@
-﻿[
+[
   {
-    "Name": "Gaping Dragon",
-    "Id": 11110127,
-    "Flag": 2
+    "Name": "Orange Soapstone",
+    "Id": 11110716,
+    "Flag": 11017020,
+    "Offset": "0x1281",
+    "AddressBit": 3
   },
   {
-    "Name": "Bell Gargoyles",
-    "Id": 11110073,
-    "Flag": 3
+    "Name": "Residence Key",
+    "Id": 11110721,
+    "Flag": 11017030,
+    "Offset": "0x1280",
+    "AddressBit": 1
   },
   {
-    "Name": "Crossbreed Priscilla",
-    "Id": 11110325,
-    "Flag": 4
+    "Name": "Repair Box",
+    "Id": 11110722,
+    "Flag": 11017040,
+    "Offset": "0x1286",
+    "AddressBit": 7
   },
   {
-    "Name": "Great Grey Wolf Sif",
-    "Id": 11110211,
-    "Flag": 5
+    "Name": "Bottomless Box",
+    "Id": 11110748,
+    "Flag": 11007010,
+    "Offset": "0x1282",
+    "AddressBit": 5
   },
   {
-    "Name": "Pinwheel",
-    "Id": 11110470,
-    "Flag": 6
+    "Name": "Transient Curse",
+    "Id": 11110756,
+    "Flag": 11017190
   },
   {
-    "Name": "Gravelord Nito",
-    "Id": 11110494,
-    "Flag": 7
+    "Name": "Hummanity",
+    "Id": 11110760,
+    "Flag": 11027020
   },
   {
-    "Name": "Chaos Witch Quelaag",
-    "Id": 11110164,
-    "Flag": 9
+    "Name": "Purging Stone",
+    "Id": 11110763,
+    "Flag": 11607110
   },
   {
-    "Name": "Bed of Chaos",
-    "Id": 11110445,
-    "Flag": 10
+    "Name": "Thunder Stoneplate Ring",
+    "Id": 11110775,
+    "Flag": 11507030
   },
   {
-    "Name": "Iron Golem",
-    "Id": 11110258,
-    "Flag": 11
+    "Name": "Spell Stoneplate Ring",
+    "Id": 11110776,
+    "Flag": 11507040
   },
   {
-    "Name": "Ornstein and Smough",
-    "Id": 11110293,
-    "Flag": 12
+    "Name": "Crest of Artorias",
+    "Id": 11110800,
+    "Flag": 11017140,
+    "Offset": "0x1292",
+    "AddressBit": 3
   },
   {
-    "Name": "4 Kings",
-    "Id": 11110357,
-    "Flag": 13
+    "Name": "Weapon Smithbox",
+    "Id": 11110801,
+    "Flag": 11017150,
+    "Offset": "0x1291",
+    "AddressBit": 1
   },
   {
-    "Name": "Seath the Scaleless",
-    "Id": 11110400,
-    "Flag": 14
+    "Name": "Armor Smithbox",
+    "Id": 11110802,
+    "Flag": 11017160,
+    "Offset": "0x1297",
+    "AddressBit": 7
   },
   {
-    "Name": "Gwyn, Lord of Cinder",
-    "Id": 11110499,
-    "Flag": 15
+    "Name": "Repair Box",
+    "Id": 11110803,
+    "Flag": 11017170,
+    "Offset": "0x1296",
+    "AddressBit": 5
   },
   {
-    "Name": "Asylum Demon",
-    "Id": 11110009,
-    "Flag": 16
+    "Name": "Gold Pine Resin",
+    "Id": 11110820,
+    "Flag": 11217000
   },
   {
-    "Name": "Taurus Demon",
-    "Id": 11110053,
-    "Flag": 11010901
+    "Name": "Golem Helm",
+    "Id": 11110835,
+    "Flag": 11807020
   },
   {
-    "Name": "Capra Demon",
-    "Id": 11110108,
-    "Flag": 11010902
+    "Name": "Golem Armor",
+    "Id": 11110836,
+    "Flag": 11807030
   },
   {
-    "Name": "Moonlight Butterfly",
-    "Id": 11110200,
-    "Flag": 11200900
+    "Name": "Golem Gauntlets",
+    "Id": 11110837,
+    "Flag": 11807040
   },
   {
-    "Name": "Sanctuary Guardian",
-    "Id": 11110502,
-    "Flag": 11210000
+    "Name": "Golem Leggings",
+    "Id": 11110838,
+    "Flag": 11807050
   },
   {
-    "Name": "Knight Artorias",
-    "Id": 11110516,
-    "Flag": 11210001
+    "Name": "Smough's Helm",
+    "Id": 11110839,
+    "Flag": 11807060
   },
   {
-    "Name": "Manus, Father of the Abyss",
-    "Id": 11110549,
-    "Flag": 11210002
+    "Name": "Smough's Armor",
+    "Id": 11110840,
+    "Flag": 11807070
   },
   {
-    "Name": "Black Dragon Kalameet",
-    "Id": 11110520,
-    "Flag": 11210004
+    "Name": "Smough's Gauntlets",
+    "Id": 11110841,
+    "Flag": 11807080
   },
   {
-    "Name": "Demon Firesage",
-    "Id": 11110417,
-    "Flag": 11410410
+    "Name": "Smough's Leggings",
+    "Id": 11110842,
+    "Flag": 11807090
   },
   {
-    "Name": "Ceaseless Discharge",
-    "Id": 11110407,
-    "Flag": 11410900
+    "Name": "Ornstein's Helm",
+    "Id": 11110843,
+    "Flag": 11807100
   },
   {
-    "Name": "Centipede Demon",
-    "Id": 11110422,
-    "Flag": 11410901
+    "Name": "Ornstein's Armor",
+    "Id": 11110844,
+    "Flag": 11807110
   },
   {
-    "Name": "Gwyndolin",
-    "Id": 11110295,
-    "Flag": 11510900
+    "Name": "Ornstein's Gauntlets",
+    "Id": 11110845,
+    "Flag": 11807120
   },
   {
-	"Name": "Stray Demon",
-	"Id": 11110080,
-	"Flag": 11810900
+    "Name": "Ornstein's Leggings",
+    "Id": 11110846,
+    "Flag": 11807130
+  },
+  {
+    "Name": "Crown of the Dark Sun",
+    "Id": 11110847,
+    "Flag": 11807230
+  },
+  {
+    "Name": "Moonlight Robe",
+    "Id": 11110848,
+    "Flag": 11807170
+  },
+  {
+    "Name": "Moonlight Gloves",
+    "Id": 11110849,
+    "Flag": 11807180
+  },
+  {
+    "Name": "Moonlight Waistcloth",
+    "Id": 11110850,
+    "Flag": 11807190
+  },
+  {
+    "Name": "Crown of the Great Lord",
+    "Id": 11110851,
+    "Flag": 11807240
+  },
+  {
+    "Name": "Robe of the Great Lord",
+    "Id": 11110852,
+    "Flag": 11807200
+  },
+  {
+    "Name": "Bracelet of the Great Lord",
+    "Id": 11110853,
+    "Flag": 11807210
+  },
+  {
+    "Name": "Anklet of the Great Lord",
+    "Id": 11110854,
+    "Flag": 11807220
+  },
+  {
+    "Name": "Master Key",
+    "Id": 11110855,
+    "Flag": 11007020
+  },
+  {
+    "Name": "Helm of Artorias",
+    "Id": 11110856,
+    "Flag": 11217060
+  },
+  {
+    "Name": "Armor of Artorias",
+    "Id": 11110857,
+    "Flag": 11217070
+  },
+  {
+    "Name": "Gauntlets of Artorias",
+    "Id": 11110858,
+    "Flag": 11217080
+  },
+  {
+    "Name": "Leggings of Artorias",
+    "Id": 11110859,
+    "Flag": 11217090
+  },
+  {
+    "Name": "Pupil of the death",
+    "Id": 11110860,
+    "Flag": 11307000
+  },
+  {
+    "Name": "Divine Blessing",
+    "Id": 11110861,
+    "Flag": 11017050
+  },
+  {
+    "Name": "human nature",
+    "Id": 11110863,
+    "Flag": 11027020
+  },
+  {
+    "Name": "Twins of human nature",
+    "Id": 11110864,
+    "Flag": 11307010
+  },
+  {
+    "Name": "Miracle: Heal",
+    "Id": 11110865,
+    "Flag": 11027260
+  },
+  {
+    "Name": "Great Heal Excerpt",
+    "Id": 11110866,
+    "Flag": 11027270
+  },
+  {
+    "Name": "Crescent Axe",
+    "Id": 11110867,
+    "Flag": 11307020
+  },
+  {
+    "Name": "Grain ring of East",
+    "Id": 11110878,
+    "Flag": 11407000
+  },
+  {
+    "Name": "Sorcery: Soul Arrow",
+    "Id": 11110888,
+    "Flag": 11027130,
+    "Offset": "0x4E8C",
+    "AddressBit": 7
+  },
+  {
+    "Name": "Sorcery: Great Soul Arrow",
+    "Id": 11110889,
+    "Flag": 11027140
+  },
+  {
+    "Name": "Sorcery: Heavy Soul Arrow",
+    "Id": 11110890,
+    "Flag": 11027150,
+    "Offset": "0x4E93",
+    "AddressBit": 5
+  },
+  {
+    "Name": "Sorcery: Great Heavy Soul Arrow",
+    "Id": 11110891,
+    "Flag": 11027160
+  },
+  {
+    "Name": "Magic Weapon",
+    "Id": 11110892,
+    "Flag": 11027170
+  },
+  {
+    "Name": "Magic Shield",
+    "Id": 11110893,
+    "Flag": 11027180
+  },
+  {
+    "Name": "Sorcery: Aural Decoy",
+    "Id": 11110894,
+    "Flag": 11027190
+  },
+  {
+    "Name": "Sorcery: Fall Control",
+    "Id": 11110895,
+    "Flag": 11027200
+  },
+  {
+    "Name": "Bellowing Dragoncrest Ring",
+    "Id": 11110896,
+    "Flag": 11027210
+  },
+  {
+    "Name": "Lingering Dragoncrest Ring",
+    "Id": 11110897,
+    "Flag": 11027220
+  },
+  {
+    "Name": "Sorcery: Homing Soulmass",
+    "Id": 11110899,
+    "Flag": 11027230
+  },
+  {
+    "Name": "Soul Spear",
+    "Id": 11110900,
+    "Flag": 11027240
+  },
+  {
+    "Name": "Arrow of Seoul magic",
+    "Id": 11110901,
+    "Flag": 11027130
+  },
+  {
+    "Name": "Futoshiya of Seoul magic",
+    "Id": 11110902,
+    "Flag": 11027150
+  },
+  {
+    "Name": "Weapons can not be seen magic",
+    "Id": 11110904,
+    "Flag": 11207000
+  },
+  {
+    "Name": "Body you can not see magic",
+    "Id": 11110905,
+    "Flag": 11207010
+  },
+  {
+    "Name": "Shining light magic",
+    "Id": 11110906,
+    "Flag": 11207020
+  },
+  {
+    "Name": "magic Repair",
+    "Id": 11110907,
+    "Flag": 11207030
+  },
+  {
+    "Name": "magic mimicry",
+    "Id": 11110908,
+    "Flag": 11207040
+  },
+  {
+    "Name": "Sorcery: Resist Curse",
+    "Id": 11110910,
+    "Flag": 11607000
+  },
+  {
+    "Name": "Pyromancy: Fireball",
+    "Id": 11110912,
+    "Flag": 11407030
+  },
+  {
+    "Name": "Fire Orb",
+    "Id": 11110913,
+    "Flag": 11407030
+  },
+  {
+    "Name": "Pyromancy: Combustion",
+    "Id": 11110914,
+    "Flag": 11407050
+  },
+  {
+    "Name": "Iron Flesh",
+    "Id": 11110915,
+    "Flag": 11407060
+  },
+  {
+    "Name": "Pyromancy: Flash Sweat",
+    "Id": 11110916,
+    "Flag": 11407070
+  },
+  {
+    "Name": "Servant Roster",
+    "Id": 11110917,
+    "Flag": 11407080
+  },
+  {
+    "Name": "Pyromancy: Poison Mist",
+    "Id": 11110919,
+    "Flag": 11407090
+  },
+  {
+    "Name": "Pyromancy: Toxic Mist",
+    "Id": 11110920,
+    "Flag": 11407100
+  },
+  {
+    "Name": "Fire Orb",
+    "Id": 11110921,
+    "Flag": 11407130
+  },
+  {
+    "Name": "Pyromancy: Combustion",
+    "Id": 11110922,
+    "Flag": 11407030
+  },
+  {
+    "Name": "Pyromancy: Great Fireball",
+    "Id": 11110923,
+    "Flag": 11407150
+  },
+  {
+    "Name": "Pyromancy: Firestorm",
+    "Id": 11110924,
+    "Flag": 11407160
+  },
+  {
+    "Name": "Flame to Nagiharau magic",
+    "Id": 11110925,
+    "Flag": 11407170
+  },
+  {
+    "Name": "magic fire",
+    "Id": 11110926,
+    "Flag": 11407050
+  },
+  {
+    "Name": "magic Large fire",
+    "Id": 11110927,
+    "Flag": 11407180
+  },
+  {
+    "Name": "Fascination of immortality magic",
+    "Id": 11110928,
+    "Flag": 11407190
+  },
+  {
+    "Name": "Miracle: Heal",
+    "Id": 11110929,
+    "Flag": 11017060,
+    "Offset": "0x17A3",
+    "AddressBit": 3
+  },
+  {
+    "Name": "Great Heal Excerpt",
+    "Id": 11110930,
+    "Flag": 11017070,
+    "Offset": "0x17A2",
+    "AddressBit": 1
+  },
+  {
+    "Name": "Homeward",
+    "Id": 11110931,
+    "Flag": 11017080,
+    "Offset": "0x17A0",
+    "AddressBit": 7
+  },
+  {
+    "Name": "Miracle: Force",
+    "Id": 11110932,
+    "Flag": 11017090,
+    "Offset": "0x17A7",
+    "AddressBit": 5
+  },
+  {
+    "Name": "Seek Guidance",
+    "Id": 11110933,
+    "Flag": 11017120,
+    "Offset": "0x1295",
+    "AddressBit": 3
+  },
+  {
+    "Name": "Divine Blessing",
+    "Id": 11110936,
+    "Flag": 11027040
+  },
+  {
+    "Name": "Miracle: Great Heal",
+    "Id": 11110938,
+    "Flag": 11017100
+  },
+  {
+    "Name": "Homeward",
+    "Id": 11110940,
+    "Flag": 11027280
+  },
+  {
+    "Name": "Miracle Force",
+    "Id": 11110941,
+    "Flag": 11017090
+  },
+  {
+    "Name": "Miracle: Wrath of the Gods",
+    "Id": 11110942,
+    "Flag": 11017110
+  },
+  {
+    "Name": "Seek Guidance",
+    "Id": 11110943,
+    "Flag": 11017180
+  },
+  {
+    "Name": "Miracle: Magic Barrier",
+    "Id": 11110944,
+    "Flag": 11017130
+  },
+  {
+    "Name": "Book of the Guilty",
+    "Id": 11110946,
+    "Flag": 11607020
+  },
+  {
+    "Name": "solution curse stone",
+    "Id": 11110947,
+    "Flag": 11607110
+  },
+  {
+    "Name": "Miracle: Karmic Justice",
+    "Id": 11110949,
+    "Flag": 11607030
+  },
+  {
+    "Name": "Bloodbite Ring",
+    "Id": 11110951,
+    "Flag": 11607050
+  },
+  {
+    "Name": "Poisonbite Ring",
+    "Id": 11110952,
+    "Flag": 11607060
+  },
+  {
+    "Name": "Ring of Sacrifice",
+    "Id": 11110953,
+    "Flag": 11607080
+  },
+  {
+    "Name": "Arrow of Seoul magic",
+    "Id": 11110955,
+    "Flag": 11027130
+  },
+  {
+    "Name": "Arrow of Seoul strong magic",
+    "Id": 11110956,
+    "Flag": 11027140
+  },
+  {
+    "Name": "Futoshiya of Seoul magic",
+    "Id": 11110957,
+    "Flag": 11027150
+  },
+  {
+    "Name": "Futoshiya of Seoul strong magic",
+    "Id": 11110958,
+    "Flag": 11027160
+  },
+  {
+    "Name": "Mass of Seoul to be tracked magic",
+    "Id": 11110959,
+    "Flag": 11027230
+  },
+  {
+    "Name": "Spear of Seoul magic",
+    "Id": 11110960,
+    "Flag": 11707070
+  },
+  {
+    "Name": "Magic weapon magic",
+    "Id": 11110961,
+    "Flag": 11027170
+  },
+  {
+    "Name": "Shield of magic magic",
+    "Id": 11110962,
+    "Flag": 11027180
+  },
+  {
+    "Name": "Crystalline mass of Seoul to be tracked magic",
+    "Id": 11110963,
+    "Flag": 11707090
+  },
+  {
+    "Name": "Crystal spear of Seoul magic",
+    "Id": 11110964,
+    "Flag": 11707100
+  },
+  {
+    "Name": "Crystal magic weapon magic",
+    "Id": 11110965,
+    "Flag": 11707110
+  },
+  {
+    "Name": "Kaji box of weapons",
+    "Id": 11110982,
+    "Flag": 11017150
+  },
+  {
+    "Name": "Kaji box Armor",
+    "Id": 11110983,
+    "Flag": 11017160
+  },
+  {
+    "Name": "repair box",
+    "Id": 11110984,
+    "Flag": 11017170
+  },
+  {
+    "Name": "Kaji box of weapons",
+    "Id": 11110991,
+    "Flag": 11017150
+  },
+  {
+    "Name": "Kaji box Armor",
+    "Id": 11110992,
+    "Flag": 11017160
+  },
+  {
+    "Name": "repair box",
+    "Id": 11110993,
+    "Flag": 11017170
+  },
+  {
+    "Name": "Hummanity",
+    "Id": 11111010,
+    "Flag": 11027050
+  },
+  {
+    "Name": "Gold Pine Resin",
+    "Id": 11111018,
+    "Flag": 11007000
+  },
+  {
+    "Name": "Weapons can not be seen magic",
+    "Id": 11111019,
+    "Flag": 11207000
+  },
+  {
+    "Name": "Body you can not see magic",
+    "Id": 11111020,
+    "Flag": 11207010
+  },
+  {
+    "Name": "Shining light magic",
+    "Id": 11111021,
+    "Flag": 11207020
+  },
+  {
+    "Name": "magic Repair",
+    "Id": 11111022,
+    "Flag": 11207030
+  },
+  {
+    "Name": "magic mimicry",
+    "Id": 11111023,
+    "Flag": 11207040
+  },
+  {
+    "Name": "human face Hello",
+    "Id": 11111028,
+    "Flag": 11217010
+  },
+  {
+    "Name": "human face Thank you",
+    "Id": 11111029,
+    "Flag": 11217020
+  },
+  {
+    "Name": "mass of Seoul to be tracked magic",
+    "Id": 11111038,
+    "Flag": 11027230
+  },
+  {
+    "Name": "Spear Seoul magic",
+    "Id": 11111040,
+    "Flag": 11027240
+  },
+  {
+    "Name": "shield of magic magic",
+    "Id": 11111045,
+    "Flag": 11027180
+  },
+  {
+    "Name": "body you can not see magic",
+    "Id": 11111048,
+    "Flag": 11207010
+  },
+  {
+    "Name": "Magic Repair",
+    "Id": 11111052,
+    "Flag": 11207030
+  },
+  {
+    "Name": "Magic mimicry",
+    "Id": 11111054,
+    "Flag": 11207040
+  },
+  {
+    "Name": "Magic fireball",
+    "Id": 11111058,
+    "Flag": 11407030
+  },
+  {
+    "Name": "Magic fireball",
+    "Id": 11111059,
+    "Flag": 11407030
+  },
+  {
+    "Name": "Magic the great fire ball",
+    "Id": 11111060,
+    "Flag": 11407150
+  },
+  {
+    "Name": "Flame to Nagiharau magic",
+    "Id": 11111064,
+    "Flag": 11407170
+  },
+  {
+    "Name": "Magic fire",
+    "Id": 11111065,
+    "Flag": 11407050
+  },
+  {
+    "Name": "Magic Large fire",
+    "Id": 11111066,
+    "Flag": 11407180
+  },
+  {
+    "Name": "body of iron magic",
+    "Id": 11111070,
+    "Flag": 11407060
+  },
+  {
+    "Name": "Intense sweating  magic",
+    "Id": 11111071,
+    "Flag": 11407070
+  },
+  {
+    "Name": "Miracle: Heal",
+    "Id": 11111077,
+    "Flag": 11027090
+  },
+  {
+    "Name": "Great Heal Excerpt",
+    "Id": 11111079,
+    "Flag": 11027100
+  },
+  {
+    "Name": "Miracle Force",
+    "Id": 11111087,
+    "Flag": 11017090
   }
-  
 ]

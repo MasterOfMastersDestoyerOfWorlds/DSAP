@@ -1,7 +1,7 @@
 using Archipelago.Core.Models;
 using DSAP.Models;
 using Serilog;
-using static DSAP.Enums;
+using static DSAP.DarkSoulsEnums;
 
 namespace DSAP
 {
@@ -67,8 +67,9 @@ namespace DSAP
             }
             else
             {
-                DarkSoulsMemory.AddItem((int)item.Category, item.Id, itemCount);
-                DarkSoulsMemory.ItemPickupDialogWithoutPickup(((int)item.Category), item.Id, itemCount);
+                int categoryHexValue = DarkSoulsEnumUtils.GetItemCategoryHexValue(item.Category);
+                DarkSoulsMemoryActions.AddItem(categoryHexValue, item.Id, itemCount);
+                DarkSoulsMemoryActions.ItemPickupDialogWithoutPickup(categoryHexValue, item.Id, itemCount);
             }
             return true;
         }
@@ -82,7 +83,7 @@ namespace DSAP
             }
             InjectedString injString = Helpers.SetItemPickupText(item);
             injectedStrings.Add(injString);
-            DarkSoulsMemory.ItemPickupDialogWithoutPickup(((int)item.Category), item.Id, 1);
+            DarkSoulsMemoryActions.ItemPickupDialogWithoutPickup((DarkSoulsEnumUtils.GetItemCategoryHexValue(item.Category)), item.Id, 1);
             return true;
         }
     }

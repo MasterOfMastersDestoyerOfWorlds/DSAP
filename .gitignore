@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 #VScode project files
 *.vscode
+
+#Cusor Generated Tool Folder
+tools

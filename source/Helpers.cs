@@ -286,7 +286,7 @@ namespace DSAP
             {
                 return ShopLineUpItemParamOffset;
             }
-            ShopLineUpItemParamOffset = ResolvePointerChain(0x141C7E450, 0x0, 0xC0, 0x38, -0x18, 0x12AD) + 0x1D;
+            ShopLineUpItemParamOffset = ResolvePointerChain(0x141C7E450, 0x0, 0xC0, 0x38, -0x18, 0x1D);
             return ShopLineUpItemParamOffset;
         }
         public static ulong GetPlayerGameDataOffset()
@@ -303,9 +303,9 @@ namespace DSAP
             var baseBonfire = OffsetPointer(baseAddress, 0x5B);
             return baseBonfire;
         }
-        public static List<Location> GetItemLotLocations()
+        public static List<ILocation> GetItemLotLocations()
         {
-            List<Location> locations = new List<Location>();
+            List<ILocation> locations = new List<ILocation>();
             var lotFlags = GetItemLotFlags();
             var baseAddress = GetEventFlagsOffset();
             foreach (var lot in lotFlags)
@@ -323,9 +323,9 @@ namespace DSAP
             }
             return locations;
         }
-        public static List<Location> GetBossFlagLocations()
+        public static List<ILocation> GetBossFlagLocations()
         {
-            List<Location> locations = new List<Location>();
+            List<ILocation> locations = new List<ILocation>();
             var lotFlags = GetBossFlags();
             var baseAddress = GetEventFlagsOffset();
             foreach (var lot in lotFlags)
@@ -344,9 +344,29 @@ namespace DSAP
             }
             return locations;
         }
-        public static List<Location> GetBonfireFlagLocations()
+        public static List<ILocation> GetShopLineUpFlagLocations()
         {
-            List<Location> locations = new List<Location>();
+            List<ILocation> locations = new List<ILocation>();
+            var lotFlags = GetShopLineUpFlags();
+            var baseAddress = GetEventFlagsOffset();
+            foreach (var lot in lotFlags)
+            {
+                locations.Add(new Location
+                {
+                    Name = lot.Name,
+                    Address = baseAddress + GetEventFlagOffset(lot.Flag).Item1,
+                    AddressBit = GetEventFlagOffset(lot.Flag).Item2,
+                    Id = lot.Id,
+                    NibblePosition = NibblePosition.Lower,
+                    CheckType = LocationCheckType.Bit,
+                    Category = "ShopLineUpItems",
+                });
+            }
+            return locations;
+        }
+        public static List<ILocation> GetBonfireFlagLocations()
+        {
+            List<ILocation> locations = new List<ILocation>();
             var lotFlags = GetBonfireFlags();
             var baseAddress = GetEventFlagsOffset();
             foreach (var lot in lotFlags)
@@ -364,9 +384,9 @@ namespace DSAP
             }
             return locations;
         }
-        public static List<Location> GetDoorFlagLocations()
+        public static List<ILocation> GetDoorFlagLocations()
         {
-            List<Location> locations = new List<Location>();
+            List<ILocation> locations = new List<ILocation>();
             var lotFlags = GetDoorFlags();
             var baseAddress = GetEventFlagsOffset();
             foreach (var lot in lotFlags)
@@ -384,9 +404,9 @@ namespace DSAP
             }
             return locations;
         }
-        public static List<Location> GetFogWallFlagLocations()
+        public static List<ILocation> GetFogWallFlagLocations()
         {
-            List<Location> locations = new List<Location>();
+            List<ILocation> locations = new List<ILocation>();
             var lotFlags = GetFogWallFlags();
             var baseAddress = GetEventFlagsOffset();
             foreach (var lot in lotFlags)
@@ -404,9 +424,9 @@ namespace DSAP
             }
             return locations;
         }
-        public static List<Location> GetMiscFlagLocations()
+        public static List<ILocation> GetMiscFlagLocations()
         {
-            List<Location> locations = new List<Location>();
+            List<ILocation> locations = new List<ILocation>();
             var lotFlags = GetMiscFlags();
             var baseAddress = GetEventFlagsOffset();
             foreach (var lot in lotFlags)
@@ -459,6 +479,7 @@ namespace DSAP
         {
             newShopLineUpItem.EventFlag = oldShopLineUpItem.shopLineUpItemParam.EventFlag;
             newShopLineUpItem.SoulValue = oldShopLineUpItem.shopLineUpItemParam.SoulValue;
+            newShopLineUpItem.SellQuantity = oldShopLineUpItem.shopLineUpItemParam.SellQuantity;
             Memory.WriteStruct<ShopLineUpItemParam>(oldShopLineUpItem.startAddress, newShopLineUpItem);
         }
         public static Dictionary<int, List<ItemLot>> GetItemLots()
@@ -530,11 +551,11 @@ namespace DSAP
             ulong playerGameData = GetPlayerGameDataOffset();
             return Memory.ReadByte(playerGameData + 0x120) != 0;
         }
-        public static List<Location> GetBossLocations()
+        public static List<ILocation> GetBossLocations()
         {
             var offset = GetProgressionFlagOffset();
             var bosses = GetBosses();
-            var locations = new List<Location>();
+            var locations = new List<ILocation>();
             foreach (var b in bosses)
             {
                 var location = new Location
@@ -569,7 +590,7 @@ namespace DSAP
         public static void SetLastBonfire(LastBonfire lastBonfire)
         {
             var baseC = GetBaseCOffset();
-            var lastBonfireAddress = OffsetPointer(baseC, 0xB34);
+            var lastBonfireAddress = baseC + 0xB34;
             Memory.Write(lastBonfireAddress, lastBonfire.id);
         }
         public static async void MonitorLastBonfire(Action<LastBonfire> action)
@@ -1076,16 +1097,16 @@ namespace DSAP
             int messageManOffset;
             switch (item.Category)
             {
-                case Enums.DSItemCategory.Armor: 
+                case DarkSoulsEnums.ItemCategory.Armor: 
                     messageManOffset = 0x3B0; 
                     break;
-                case Enums.DSItemCategory.MeleeWeapons:
+                case DarkSoulsEnums.ItemCategory.MeleeWeapons:
                     messageManOffset = 0x3A0;
                     break;
-                case Enums.DSItemCategory.Rings:
+                case DarkSoulsEnums.ItemCategory.Rings:
                     messageManOffset = 0x390;
                     break;
-                case Enums.DSItemCategory.Consumables:
+                case DarkSoulsEnums.ItemCategory.Consumables:
                     messageManOffset = 0x380;
                     break;
                 default: 
