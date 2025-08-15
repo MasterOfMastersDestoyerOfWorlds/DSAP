@@ -211,7 +211,7 @@
     "Flag": 11217090
   },
   {
-    "Name": "Pupil of the death",
+    "Name": "Eye of Death",
     "Id": 11110860,
     "Flag": 11307000
   },
@@ -221,12 +221,12 @@
     "Flag": 11017050
   },
   {
-    "Name": "human nature",
+    "Name": "Humanity",
     "Id": 11110863,
-    "Flag": 11027020
+    "Flag": 11217100
   },
   {
-    "Name": "Twins of human nature",
+    "Name": "Twin Humanities",
     "Id": 11110864,
     "Flag": 11307010
   },
@@ -246,7 +246,7 @@
     "Flag": 11307020
   },
   {
-    "Name": "Grain ring of East",
+    "Name": "East Wood Grain Ring",
     "Id": 11110878,
     "Flag": 11407000
   },
@@ -325,27 +325,27 @@
     "Flag": 11027150
   },
   {
-    "Name": "Weapons can not be seen magic",
+    "Name": "Sorcery: Hidden Weapon",
     "Id": 11110904,
     "Flag": 11207000
   },
   {
-    "Name": "Body you can not see magic",
+    "Name": "Sorcery: Hidden Body",
     "Id": 11110905,
     "Flag": 11207010
   },
   {
-    "Name": "Shining light magic",
+    "Name": "Cast Light",
     "Id": 11110906,
     "Flag": 11207020
   },
   {
-    "Name": "magic Repair",
+    "Name": "Sorcery: Repair",
     "Id": 11110907,
     "Flag": 11207030
   },
   {
-    "Name": "magic mimicry",
+    "Name": "Sorcery: Chameleon",
     "Id": 11110908,
     "Flag": 11207040
   },
@@ -485,9 +485,9 @@
     "Flag": 11027280
   },
   {
-    "Name": "Miracle Force",
+    "Name": "Miracle: Force",
     "Id": 11110941,
-    "Flag": 11017090
+    "Flag": 11027290
   },
   {
     "Name": "Miracle: Wrath of the Gods",
@@ -630,37 +630,12 @@
     "Flag": 11007000
   },
   {
-    "Name": "Weapons can not be seen magic",
-    "Id": 11111019,
-    "Flag": 11207000
-  },
-  {
-    "Name": "Body you can not see magic",
-    "Id": 11111020,
-    "Flag": 11207010
-  },
-  {
-    "Name": "Shining light magic",
-    "Id": 11111021,
-    "Flag": 11207020
-  },
-  {
-    "Name": "magic Repair",
-    "Id": 11111022,
-    "Flag": 11207030
-  },
-  {
-    "Name": "magic mimicry",
-    "Id": 11111023,
-    "Flag": 11207040
-  },
-  {
-    "Name": "human face Hello",
+    "Name": "Hello Carving",
     "Id": 11111028,
     "Flag": 11217010
   },
   {
-    "Name": "human face Thank you",
+    "Name": "Thank you Carving",
     "Id": 11111029,
     "Flag": 11217020
   },
@@ -678,21 +653,6 @@
     "Name": "shield of magic magic",
     "Id": 11111045,
     "Flag": 11027180
-  },
-  {
-    "Name": "body you can not see magic",
-    "Id": 11111048,
-    "Flag": 11207010
-  },
-  {
-    "Name": "Magic Repair",
-    "Id": 11111052,
-    "Flag": 11207030
-  },
-  {
-    "Name": "Magic mimicry",
-    "Id": 11111054,
-    "Flag": 11207040
   },
   {
     "Name": "Magic fireball",
@@ -743,10 +703,5 @@
     "Name": "Great Heal Excerpt",
     "Id": 11111079,
     "Flag": 11027100
-  },
-  {
-    "Name": "Miracle Force",
-    "Id": 11111087,
-    "Flag": 11017090
   }
 ]
