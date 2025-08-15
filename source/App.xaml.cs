@@ -148,7 +148,7 @@ namespace DSAP
             DarkSoulsMemoryActions.RemoveItems();
             DarkSoulsMemoryActions.RemoveItemPickupDialogSetupFunction();
 
-            //DarkSoulsMemoryActions.ReplaceShopItems();
+            DarkSoulsMemoryActions.ReplaceShopItems();
 
             //need to reload the area on connect to ensure that the item lots are updated 
             DarkSoulsMemoryActions.HomewardBoneCommand();

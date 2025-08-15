@@ -315,14 +315,14 @@
     "Flag": 11027240
   },
   {
-    "Name": "Arrow of Seoul magic",
+    "Name": "Sorcery: Soul Arrow",
     "Id": 11110901,
-    "Flag": 11027130
+    "Flag": 11607120
   },
   {
-    "Name": "Futoshiya of Seoul magic",
+    "Name": "Sorcery: Heavy Soul Arrow",
     "Id": 11110902,
-    "Flag": 11027150
+    "Flag": 11607130
   },
   {
     "Name": "Sorcery: Hidden Weapon",
@@ -362,7 +362,7 @@
   {
     "Name": "Fire Orb",
     "Id": 11110913,
-    "Flag": 11407030
+    "Flag": 11407040
   },
   {
     "Name": "Pyromancy: Combustion",
@@ -402,7 +402,7 @@
   {
     "Name": "Pyromancy: Combustion",
     "Id": 11110922,
-    "Flag": 11407030
+    "Flag": 11407140
   },
   {
     "Name": "Pyromancy: Great Fireball",
@@ -415,22 +415,17 @@
     "Flag": 11407160
   },
   {
-    "Name": "Flame to Nagiharau magic",
+    "Name": "Pyromancy: Fire Whip",
     "Id": 11110925,
     "Flag": 11407170
   },
   {
-    "Name": "magic fire",
-    "Id": 11110926,
-    "Flag": 11407050
-  },
-  {
-    "Name": "magic Large fire",
+    "Name": "Great Combustion",
     "Id": 11110927,
     "Flag": 11407180
   },
   {
-    "Name": "Fascination of immortality magic",
+    "Name": "Pyromancy: Undead Rapport",
     "Id": 11110928,
     "Flag": 11407190
   },
@@ -510,11 +505,6 @@
     "Flag": 11607020
   },
   {
-    "Name": "solution curse stone",
-    "Id": 11110947,
-    "Flag": 11607110
-  },
-  {
     "Name": "Miracle: Karmic Justice",
     "Id": 11110949,
     "Flag": 11607030
@@ -535,92 +525,62 @@
     "Flag": 11607080
   },
   {
-    "Name": "Arrow of Seoul magic",
+    "Name": "Sorcery: Soul Arrow",
     "Id": 11110955,
-    "Flag": 11027130
+    "Flag": 11707000
   },
   {
-    "Name": "Arrow of Seoul strong magic",
+    "Name": "Sorcery: Great Soul Arrow",
     "Id": 11110956,
-    "Flag": 11027140
+    "Flag": 11707010
   },
   {
-    "Name": "Futoshiya of Seoul magic",
+    "Name": "Sorcery: Heavy Soul Arrow",
     "Id": 11110957,
-    "Flag": 11027150
+    "Flag": 11707020
   },
   {
-    "Name": "Futoshiya of Seoul strong magic",
+    "Name": "Sorcery: Great Heavy Soul Arrow",
     "Id": 11110958,
-    "Flag": 11027160
+    "Flag": 11707030
   },
   {
-    "Name": "Mass of Seoul to be tracked magic",
+    "Name": "Sorcery: Homing Soulmass",
     "Id": 11110959,
-    "Flag": 11027230
+    "Flag": 11707060
   },
   {
-    "Name": "Spear of Seoul magic",
+    "Name": "Soul Spear",
     "Id": 11110960,
     "Flag": 11707070
   },
   {
-    "Name": "Magic weapon magic",
+    "Name": "Magic Weapon",
     "Id": 11110961,
-    "Flag": 11027170
+    "Flag": 11707040
   },
   {
-    "Name": "Shield of magic magic",
+    "Name": "Magic Shield",
     "Id": 11110962,
-    "Flag": 11027180
+    "Flag": 11707050
   },
   {
-    "Name": "Crystalline mass of Seoul to be tracked magic",
+    "Name": "Sorcery: Homing Crystal Soulmass",
     "Id": 11110963,
     "Flag": 11707090
   },
   {
-    "Name": "Crystal spear of Seoul magic",
+    "Name": "Sorcery: Crystal Soul Spear",
     "Id": 11110964,
     "Flag": 11707100
   },
   {
-    "Name": "Crystal magic weapon magic",
+    "Name": "Sorcery: Crystal Magic Weapon",
     "Id": 11110965,
     "Flag": 11707110
   },
   {
-    "Name": "Kaji box of weapons",
-    "Id": 11110982,
-    "Flag": 11017150
-  },
-  {
-    "Name": "Kaji box Armor",
-    "Id": 11110983,
-    "Flag": 11017160
-  },
-  {
-    "Name": "repair box",
-    "Id": 11110984,
-    "Flag": 11017170
-  },
-  {
-    "Name": "Kaji box of weapons",
-    "Id": 11110991,
-    "Flag": 11017150
-  },
-  {
-    "Name": "Kaji box Armor",
-    "Id": 11110992,
-    "Flag": 11017160
-  },
-  {
-    "Name": "repair box",
-    "Id": 11110993,
-    "Flag": 11017170
-  },
-  {
-    "Name": "Hummanity",
+    "Name": "Humanity",
     "Id": 11111010,
     "Flag": 11027050
   },
@@ -640,59 +600,9 @@
     "Flag": 11217020
   },
   {
-    "Name": "mass of Seoul to be tracked magic",
-    "Id": 11111038,
-    "Flag": 11027230
-  },
-  {
-    "Name": "Spear Seoul magic",
-    "Id": 11111040,
-    "Flag": 11027240
-  },
-  {
-    "Name": "shield of magic magic",
-    "Id": 11111045,
-    "Flag": 11027180
-  },
-  {
-    "Name": "Magic fireball",
+    "Name": "Pyromancy: Fireball",
     "Id": 11111058,
-    "Flag": 11407030
-  },
-  {
-    "Name": "Magic fireball",
-    "Id": 11111059,
-    "Flag": 11407030
-  },
-  {
-    "Name": "Magic the great fire ball",
-    "Id": 11111060,
-    "Flag": 11407150
-  },
-  {
-    "Name": "Flame to Nagiharau magic",
-    "Id": 11111064,
-    "Flag": 11407170
-  },
-  {
-    "Name": "Magic fire",
-    "Id": 11111065,
-    "Flag": 11407050
-  },
-  {
-    "Name": "Magic Large fire",
-    "Id": 11111066,
-    "Flag": 11407180
-  },
-  {
-    "Name": "body of iron magic",
-    "Id": 11111070,
-    "Flag": 11407060
-  },
-  {
-    "Name": "Intense sweating  magic",
-    "Id": 11111071,
-    "Flag": 11407070
+    "Flag": 11407120
   },
   {
     "Name": "Miracle: Heal",
@@ -703,5 +613,10 @@
     "Name": "Great Heal Excerpt",
     "Id": 11111079,
     "Flag": 11027100
+  },
+  {
+    "Name": "Mystery Shop Flag",
+    "Id": 11111078,
+    "Flag": 11017210
   }
 ]
