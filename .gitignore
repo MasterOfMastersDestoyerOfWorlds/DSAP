@@ -398,7 +398,6 @@ FodyWeavers.xsd
 *.sln.iml
 
 #VScode project files
-*.vscode
 
 #Cusor Generated Tool Folder
 tools

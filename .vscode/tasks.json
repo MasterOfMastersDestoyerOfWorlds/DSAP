@@ -1,0 +1,108 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/source/DSAP.csproj",
+                "--configfile",
+                "${workspaceFolder}/.vscode/NuGet.config",
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOn": "packMaui"
+        },
+        {
+            "label": "restore",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "restore",
+                "${workspaceFolder}/source",
+                "--configfile",
+                "${workspaceFolder}/.vscode/NuGet.config"
+            ]
+        },
+        {
+            "label": "clearNuGetCache",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "nuget",
+                "locals",
+                "all",
+                "--clear"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "buildCore",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "C:\\Code\\Archipelago\\Core\\Archipelago.Core.csproj",
+                "--configuration",
+                "Debug"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "packCore",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "pack",
+                "C:\\Code\\Archipelago\\Core\\Archipelago.Core.csproj",
+                "--configuration",
+                "Debug",
+                "--output",
+                "C:/Code/Archipelago/Core/bin/Debug"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "dependsOn": "buildCore"
+        },
+        {
+            "label": "buildMauiGUI",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "C:\\Code\\Archipelago\\MauiGUI\\Archipelago.Core.MauiGUI.csproj",
+                "--configfile",
+                "${workspaceFolder}/.vscode/NuGet.config",
+                "--configuration",
+                "Debug"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build",
+            "dependsOn": "packCore"
+        },
+        {
+            "label": "packMauiGUI",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "pack",
+                "C:\\Code\\Archipelago\\MauiGUI\\Archipelago.Core.MauiGUI.csproj",
+                "--configuration",
+                "Debug",
+                "--output",
+                "C:/Code/Archipelago/MauiGUI/bin/Debug"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "dependsOn": "buildMauiGUI"
+        }
+    ]
+}
