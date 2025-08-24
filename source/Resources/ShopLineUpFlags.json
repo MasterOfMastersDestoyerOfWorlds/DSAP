@@ -30,27 +30,37 @@
   {
     "Name": "Transient Curse",
     "Id": 11110756,
-    "Flag": 11017190
+    "Flag": 11017190,
+    "Offset": "0x129B",
+    "AddressBit": 7
   },
   {
     "Name": "Hummanity",
     "Id": 11110760,
-    "Flag": 11027020
+    "Flag": 11027020,
+    "Offset": "0x1781",
+    "AddressBit": 3
   },
   {
     "Name": "Purging Stone",
     "Id": 11110763,
-    "Flag": 11607110
+    "Flag": 11607110,
+    "Offset": "0x4E8D",
+    "AddressBit": 3
   },
   {
     "Name": "Thunder Stoneplate Ring",
     "Id": 11110775,
-    "Flag": 11507030
+    "Flag": 11507030,
+    "Offset": "0x4480",
+    "AddressBit": 1
   },
   {
     "Name": "Spell Stoneplate Ring",
     "Id": 11110776,
-    "Flag": 11507040
+    "Flag": 11507040,
+    "Offset": "0x4486",
+    "AddressBit": 7
   },
   {
     "Name": "Crest of Artorias",
@@ -83,132 +93,168 @@
   {
     "Name": "Gold Pine Resin",
     "Id": 11110820,
-    "Flag": 11217000
+    "Flag": 11217000,
+    "Offset": "0xD83",
+    "AddressBit": 7
+    
+  },
+  {
+    "Name": "Bottomless Box",
+    "Id": 11110821,
+    "Flag": 11007010,
+    "Offset": "0xD82",
+    "AddressBit": 5
   },
   {
     "Name": "Golem Helm",
     "Id": 11110835,
-    "Flag": 11807020
+    "Flag": 11807020,
+    "IsEnabled": false
   },
   {
     "Name": "Golem Armor",
     "Id": 11110836,
-    "Flag": 11807030
+    "Flag": 11807030,
+    "IsEnabled": false
   },
   {
     "Name": "Golem Gauntlets",
     "Id": 11110837,
-    "Flag": 11807040
+    "Flag": 11807040,
+    "IsEnabled": false
   },
   {
     "Name": "Golem Leggings",
     "Id": 11110838,
-    "Flag": 11807050
+    "Flag": 11807050,
+    "IsEnabled": false
   },
   {
     "Name": "Smough's Helm",
     "Id": 11110839,
-    "Flag": 11807060
+    "Flag": 11807060,
+    "IsEnabled": false
   },
   {
     "Name": "Smough's Armor",
     "Id": 11110840,
-    "Flag": 11807070
+    "Flag": 11807070,
+    "IsEnabled": false
   },
   {
     "Name": "Smough's Gauntlets",
     "Id": 11110841,
-    "Flag": 11807080
+    "Flag": 11807080,
+    "IsEnabled": false
   },
   {
     "Name": "Smough's Leggings",
     "Id": 11110842,
-    "Flag": 11807090
+    "Flag": 11807090,
+    "IsEnabled": false
   },
   {
     "Name": "Ornstein's Helm",
     "Id": 11110843,
-    "Flag": 11807100
+    "Flag": 11807100,
+    "IsEnabled": false
   },
   {
     "Name": "Ornstein's Armor",
     "Id": 11110844,
-    "Flag": 11807110
+    "Flag": 11807110,
+    "IsEnabled": false
   },
   {
     "Name": "Ornstein's Gauntlets",
     "Id": 11110845,
-    "Flag": 11807120
+    "Flag": 11807120,
+    "IsEnabled": false
   },
   {
     "Name": "Ornstein's Leggings",
     "Id": 11110846,
-    "Flag": 11807130
+    "Flag": 11807130,
+    "IsEnabled": false
   },
   {
     "Name": "Crown of the Dark Sun",
     "Id": 11110847,
-    "Flag": 11807230
+    "Flag": 11807230,
+    "IsEnabled": false
   },
   {
     "Name": "Moonlight Robe",
     "Id": 11110848,
-    "Flag": 11807170
+    "Flag": 11807170,
+    "IsEnabled": false
   },
   {
     "Name": "Moonlight Gloves",
     "Id": 11110849,
-    "Flag": 11807180
+    "Flag": 11807180,
+    "IsEnabled": false
   },
   {
     "Name": "Moonlight Waistcloth",
     "Id": 11110850,
-    "Flag": 11807190
+    "Flag": 11807190,
+    "IsEnabled": false
   },
   {
     "Name": "Crown of the Great Lord",
     "Id": 11110851,
-    "Flag": 11807240
+    "Flag": 11807240,
+    "IsEnabled": false
   },
   {
     "Name": "Robe of the Great Lord",
     "Id": 11110852,
-    "Flag": 11807200
+    "Flag": 11807200,
+    "IsEnabled": false
   },
   {
     "Name": "Bracelet of the Great Lord",
     "Id": 11110853,
-    "Flag": 11807210
+    "Flag": 11807210,
+    "IsEnabled": false
   },
   {
     "Name": "Anklet of the Great Lord",
     "Id": 11110854,
-    "Flag": 11807220
+    "Flag": 11807220,
+    "IsEnabled": false
   },
   {
     "Name": "Master Key",
     "Id": 11110855,
-    "Flag": 11007020
+    "Flag": 11007020,
+    "Offset": "0xD81",
+    "AddressBit": 3
   },
   {
     "Name": "Helm of Artorias",
     "Id": 11110856,
-    "Flag": 11217060
+    "Flag": 11217060,
+    "IsEnabled": false
   },
   {
     "Name": "Armor of Artorias",
     "Id": 11110857,
-    "Flag": 11217070
+    "Flag": 11217070,
+    "IsEnabled": false
   },
   {
     "Name": "Gauntlets of Artorias",
     "Id": 11110858,
-    "Flag": 11217080
+    "Flag": 11217080,
+    "IsEnabled": false
   },
   {
     "Name": "Leggings of Artorias",
     "Id": 11110859,
-    "Flag": 11217090
+    "Flag": 11217090,
+    "IsEnabled": false
   },
   {
     "Name": "Eye of Death",
@@ -254,55 +300,71 @@
     "Name": "Sorcery: Soul Arrow",
     "Id": 11110888,
     "Flag": 11027130,
-    "Offset": "0x4E8C",
-    "AddressBit": 7
+    "Offset": "0x1793",
+    "AddressBit": 5
   },
   {
     "Name": "Sorcery: Great Soul Arrow",
     "Id": 11110889,
-    "Flag": 11027140
+    "Flag": 11027140,
+    "Offset": "0x1792",
+    "AddressBit": 3
   },
   {
     "Name": "Sorcery: Heavy Soul Arrow",
     "Id": 11110890,
     "Flag": 11027150,
-    "Offset": "0x4E93",
-    "AddressBit": 5
+    "Offset": "0x1791",
+    "AddressBit": 1
   },
   {
     "Name": "Sorcery: Great Heavy Soul Arrow",
     "Id": 11110891,
-    "Flag": 11027160
+    "Flag": 11027160,
+    "Offset": "0x1797",
+    "AddressBit": 7
   },
   {
     "Name": "Magic Weapon",
     "Id": 11110892,
-    "Flag": 11027170
+    "Flag": 11027170,
+    "Offset": "0x1796",
+    "AddressBit": 5
   },
   {
     "Name": "Magic Shield",
     "Id": 11110893,
-    "Flag": 11027180
+    "Flag": 11027180,
+    "Offset": "0x1795",
+    "AddressBit": 3
   },
   {
     "Name": "Sorcery: Aural Decoy",
     "Id": 11110894,
-    "Flag": 11027190
+    "Flag": 11027190,
+    "Offset": "0x1794",
+    "AddressBit": 1
   },
   {
     "Name": "Sorcery: Fall Control",
     "Id": 11110895,
-    "Flag": 11027200
+    "Flag": 11027200,
+    "Offset": "0x179A",
+    "AddressBit": 7
   },
   {
     "Name": "Bellowing Dragoncrest Ring",
     "Id": 11110896,
-    "Flag": 11027210
+    "Flag": 11027210,
+    "Offset": "0x1799",
+    "AddressBit": 5
   },
   {
     "Name": "Lingering Dragoncrest Ring",
     "Id": 11110897,
-    "Flag": 11027220
+    "Flag": 11027220,
+    "Offset": "0x1798",
+    "AddressBit": 3
   },
   {
     "Name": "Sorcery: Homing Soulmass",
@@ -317,37 +379,51 @@
   {
     "Name": "Sorcery: Soul Arrow",
     "Id": 11110901,
-    "Flag": 11607120
+    "Flag": 11607120,
+    "Offset": "0x4E8C",
+    "AddressBit": 7
   },
   {
     "Name": "Sorcery: Heavy Soul Arrow",
     "Id": 11110902,
-    "Flag": 11607130
+    "Flag": 11607130,
+    "Offset": "0x4E93",
+    "AddressBit": 5
   },
   {
     "Name": "Sorcery: Hidden Weapon",
     "Id": 11110904,
-    "Flag": 11207000
+    "Flag": 11207000,
+    "Offset": "0x2183",
+    "AddressBit": 7
   },
   {
     "Name": "Sorcery: Hidden Body",
     "Id": 11110905,
-    "Flag": 11207010
+    "Flag": 11207010,
+    "Offset": "0x2182",
+    "AddressBit": 5
   },
   {
     "Name": "Cast Light",
     "Id": 11110906,
-    "Flag": 11207020
+    "Flag": 11207020,
+    "Offset": "0x2181",
+    "AddressBit": 3
   },
   {
     "Name": "Sorcery: Repair",
     "Id": 11110907,
-    "Flag": 11207030
+    "Flag": 11207030,
+    "Offset": "0x2180",
+    "AddressBit": 1
   },
   {
     "Name": "Sorcery: Chameleon",
     "Id": 11110908,
-    "Flag": 11207040
+    "Flag": 11207040,
+    "Offset": "0x2186",
+    "AddressBit": 7
   },
   {
     "Name": "Sorcery: Resist Curse",
@@ -357,32 +433,44 @@
   {
     "Name": "Pyromancy: Fireball",
     "Id": 11110912,
-    "Flag": 11407030
+    "Flag": 11407030,
+    "Offset": "0x3A80",
+    "AddressBit": 1
   },
   {
     "Name": "Fire Orb",
     "Id": 11110913,
-    "Flag": 11407040
+    "Flag": 11407040,
+    "Offset": "0x3A86",
+    "AddressBit": 7
   },
   {
     "Name": "Pyromancy: Combustion",
     "Id": 11110914,
-    "Flag": 11407050
+    "Flag": 11407050,
+    "Offset": "0x3A85",
+    "AddressBit": 5
   },
   {
     "Name": "Iron Flesh",
     "Id": 11110915,
-    "Flag": 11407060
+    "Flag": 11407060,
+    "Offset": "0x3A84",
+    "AddressBit": 3
   },
   {
     "Name": "Pyromancy: Flash Sweat",
     "Id": 11110916,
-    "Flag": 11407070
+    "Flag": 11407070,
+    "Offset": "0x3A8B",
+    "AddressBit": 1
   },
   {
     "Name": "Servant Roster",
     "Id": 11110917,
-    "Flag": 11407080
+    "Flag": 11407080,
+    "Offset": "0x3A89",
+    "AddressBit": 7
   },
   {
     "Name": "Pyromancy: Poison Mist",
@@ -502,27 +590,37 @@
   {
     "Name": "Book of the Guilty",
     "Id": 11110946,
-    "Flag": 11607020
+    "Flag": 11607020,
+    "Offset": "0x4E81",
+    "AddressBit": 3
   },
   {
     "Name": "Miracle: Karmic Justice",
     "Id": 11110949,
-    "Flag": 11607030
+    "Flag": 11607030,
+    "Offset": "0x4E80",
+    "AddressBit": 1
   },
   {
     "Name": "Bloodbite Ring",
     "Id": 11110951,
-    "Flag": 11607050
+    "Flag": 11607050,
+    "Offset": "0x4E85",
+    "AddressBit": 5
   },
   {
     "Name": "Poisonbite Ring",
     "Id": 11110952,
-    "Flag": 11607060
+    "Flag": 11607060,
+    "Offset": "0x4E84",
+    "AddressBit": 3
   },
   {
     "Name": "Ring of Sacrifice",
     "Id": 11110953,
-    "Flag": 11607080
+    "Flag": 11607080,
+    "Offset": "0x4E89",
+    "AddressBit": 3
   },
   {
     "Name": "Sorcery: Soul Arrow",

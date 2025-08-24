@@ -67,6 +67,7 @@ namespace DSAP
         };
         private static ulong ItemLotParamOffset = 0;
         private static ulong ShopLineUpItemParamOffset = 0;
+        private static ulong PlayerGameDataOffset = 0;
 
         public static ulong FindAddressBySignature(OffsetParams signature)
         {
@@ -291,7 +292,12 @@ namespace DSAP
         }
         public static ulong GetPlayerGameDataOffset()
         {
-            return ResolvePointerChain(0x141C8A530, new int[] { 0x0, 0xD10 });
+            if (PlayerGameDataOffset != 0)
+            {
+                return PlayerGameDataOffset;
+            }
+            PlayerGameDataOffset = ResolvePointerChain(0x141C8A530, new int[] { 0x0, 0xD10 });
+            return PlayerGameDataOffset;
         }
         public static ulong GetItemPickupDialogManImplOffset()
         {
@@ -443,6 +449,13 @@ namespace DSAP
                 });
             }
             return locations;
+        }
+        public static void CompleteLocation(Location location)
+        {
+            if (location.CheckType == LocationCheckType.Bit)
+            {
+                Memory.WriteBit(location.Address, location.AddressBit, true);
+            }
         }
         public static ulong OffsetPointer(ulong ptr, int offset)
         {

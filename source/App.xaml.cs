@@ -148,7 +148,7 @@ namespace DSAP
             DarkSoulsMemoryActions.RemoveItems();
             DarkSoulsMemoryActions.RemoveItemPickupDialogSetupFunction();
 
-            DarkSoulsMemoryActions.ReplaceShopItems();
+            //DarkSoulsMemoryActions.ReplaceShopItems();
 
             //need to reload the area on connect to ensure that the item lots are updated 
             DarkSoulsMemoryActions.HomewardBoneCommand();
@@ -261,6 +261,29 @@ namespace DSAP
                         }
                     }
                 }
+                else if (commandParts.Length > 2 && commandParts[1] == "/open")
+                {
+                    string doorName = string.Join(" ", commandParts.Skip(2));
+                    if (doorName.Length == 0)
+                    {
+                        return;
+                    }
+                    List<ILocation> bonfires = Helpers.GetDoorFlagLocations();
+                    List<ILocation> queryResults = bonfires.FindAll(x => x.Name.ToLower().Contains(doorName.ToLower()));
+                    if (queryResults.Count() == 1)
+                    {
+                        Helpers.CompleteLocation((Archipelago.Core.Models.Location)queryResults[0]);
+                        Log.Logger.Information("Opening Door: " + queryResults[0].Name);
+                    }
+                    else
+                    {
+                        Log.Logger.Information("Could not find bonfire try one of: ");
+                        foreach (ILocation door in queryResults)
+                        {
+                            Log.Logger.Information(door.Name);
+                        }
+                    }
+                }
                 else if (commandParts.Length == 3 && commandParts[1] == "/name")
                 {
                     if (int.TryParse(commandParts[2], out int itemId))
@@ -274,7 +297,7 @@ namespace DSAP
                     {
                         Console.Error.WriteLine($"Invalid item id: \"{commandParts[2]}\"");
                     }
-                    
+
                 }
             }
 
